@@ -40,7 +40,7 @@ BrightSmile Dental Clinic is a comprehensive, full-stack web application built u
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/your-username/dental-clinic-app.git](https://github.com/your-username/dental-clinic-app.git)
+git clone https://github.com/mtepenner/dental-clinic-app.git
 cd dental-clinic-app
 ```
 
