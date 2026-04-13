@@ -104,5 +104,32 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/AmazingFeature`).
 5. Open a Pull Request.
 
+## 🚀 Roadmap to Production
+The following enhancements are required to transition this repository from a development environment to a production-ready state.
+
+### 1. Security & Authentication
+* **Secure Cookie Storage**: Transition from `localStorage` to `httpOnly` and `Secure` cookies for JWT storage to mitigate XSS risks.
+* **API Rate Limiting**: Implement middleware like `express-rate-limit` on authentication endpoints to prevent brute-force attacks.
+* **HTTP Security Headers**: Integrate the `helmet` middleware in the Express server to set essential security headers.
+* **CORS Lockdown**: Restrict the `cors()` middleware to allow requests only from the specific production frontend domain.
+
+### 2. Infrastructure & Environment
+* **Managed Database**: Migrate from local MongoDB to a managed service like **MongoDB Atlas** for high availability and backups.
+* **Environment Validation**: Ensure the `validateEnv` utility runs on startup to verify all critical variables (e.g., `JWT_SECRET`) are set.
+* **Static Asset Optimization**: Use `npm run build` to generate minified production bundles via Vite before deployment.
+
+### 3. Reliability & Monitoring
+* **Professional Logging**: Replace `console.log` in `logger.js` with a structured library like **Winston** or **Pino** for external log management.
+* **Process Management**: Utilize **PM2** to run the Node.js server, ensuring automatic restarts during failures.
+* **Reverse Proxy**: Deploy the application behind **Nginx** or a cloud load balancer for SSL/TLS termination and efficient traffic routing.
+
+### 4. Application Logic
+* **Input Validation**: Implement a schema validation library (e.g., **Zod** or **Joi**) in controllers to strictly validate request bodies.
+* **Staff Route Protection**: Strictly enforce `requireAuth` and `requireRole` middlewares across all staff-facing API routes.
+* **Real Email Service**: Replace the mock `emailService` with a real provider like **SendGrid** or **Nodemailer** for patient confirmations.
+
+### 5. Deployment Pipeline
+* **Continuous Integration (CI)**: Configure a CI pipeline (e.g., GitHub Actions) to automatically run existing Jest tests on every pull request.
+
 ## 📄 License
 Distributed under the MIT License. See `LICENSE` for more information.
