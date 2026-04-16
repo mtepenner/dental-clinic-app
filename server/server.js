@@ -17,6 +17,11 @@ const app = express();
 app.use(cors()); // Allows your React app to communicate with this server
 app.use(express.json()); // Parses incoming JSON payloads
 
+// Health Check Route
+app.get('/', (req, res) => {
+  res.json({ status: 'Server is running', message: 'BrightSmile Clinic API' });
+});
+
 // Mount Routes
 app.use('/api/appointments', appointmentRoutes);
 
